@@ -1,0 +1,110 @@
+/* src/app/contact/contact.module.css */
+
+.contactPageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Left align content */
+  padding: 2rem 1rem;
+  min-height: calc(100vh - var(--navbar-height, 60px));
+  color: #004d00; /* Restore original dark green text color */
+  font-family: 'VT323', monospace;
+  position: relative;
+}
+
+/* Minimalist Terminal */
+.terminalWindow {
+  width: 90vw;
+  max-width: 800px;
+  background-color: var(--solarized-base03); /* Dark background */
+  border: 1px solid var(--solarized-base01); /* Subtle border */
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 0 0 0; /* Top margin, no horizontal auto-margin */
+  position: relative;
+}
+
+
+
+.terminalContent {
+  flex-grow: 1;
+  padding: 1rem;
+  white-space: pre-wrap;
+  word-break: break-all;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--solarized-base0); /* Main terminal text color */
+}
+
+.terminalPrompt {
+  color: var(--solarized-green); /* Prompt color */
+  margin-right: 0.5rem;
+}
+
+.typedCommand {
+  color: var(--solarized-blue); /* Typed command color */
+}
+
+.cursor {
+  animation: blink-terminal 1s step-end infinite;
+  color: var(--solarized-green);
+}
+
+@keyframes blink-terminal {
+  from, to { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.contactOutput {
+  margin-top: 1rem;
+  color: var(--solarized-base0);
+  display: flex; /* Use flex for 2 columns */
+  flex-direction: row; /* Default to row for wider screens */
+  gap: 2rem; /* Increased gap for better separation */
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.asciiArt {
+  white-space: pre;
+  font-size: 0.8rem;
+  line-height: 1;
+  color: var(--solarized-blue); /* Blue for ASCII art */
+  flex: 0 0 200px; /* Fixed width for ASCII art column */
+  max-width: 200px; /* Ensure it doesn't take more than 200px */
+  overflow: hidden; /* Hide overflow if content is too wide */
+}
+
+.contactDetails {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-basis: 0; /* Allow it to take remaining space */
+  min-width: 250px; /* Minimum width for contact details column */
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .terminalWindow {
+    width: 95vw;
+    margin: 1rem auto;
+  }
+
+  .terminalContent {
+    font-size: 0.9rem;
+  }
+
+  .contactOutput {
+    flex-direction: column; /* Stack columns on mobile */
+    gap: 1rem; /* Smaller gap when stacked */
+  }
+
+  .asciiArt {
+    width: 100%; /* Take full width on mobile */
+    max-width: 100%;
+    flex-basis: auto; /* Allow flex-basis to be auto on mobile */
+  }
+
+  .contactDetails {
+    flex-basis: auto; /* Allow flex-basis to be auto on mobile */
+  }
+}

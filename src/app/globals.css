@@ -1,0 +1,61 @@
+body {
+  background-color: #f0f0e0;
+  color: #004d00;
+  margin: 0;
+  padding: 1rem;
+  min-height: 100vh;
+  box-sizing: border-box;
+  position: relative;
+}
+
+body::after {
+  content: ' ';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.05) 50%);
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 100;
+}
+
+h1::after {
+  content: '_';
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+a {
+  color: #008000;
+  text-decoration: none;
+}
+
+a:hover {
+  background-color: #008000;
+  color: #f0f0e0;
+}
+
+:root {
+  /* GitHub Light Terminal Palette */
+  --github-bg: #ffffff;
+  --github-casing: #e0e0e0;
+  --github-text: #24292e;
+  --github-muted: #6a737d;
+  --github-blue: #0366d6;
+  --github-dark-blue: #005cc5;
+  --github-orange: #e36209;
+
+  /* Retro Futuristic Palette */
+  --retro-dark-bg: #1a1a2e;
+  --retro-neon-green: #00ff00;
+  --retro-neon-blue: #00ffff;
+  --retro-neon-purple: #ff00ff;
+  --retro-text-color: #e0e0e0;
+  --retro-accent-color: #ff7f50;
+}

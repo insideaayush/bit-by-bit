@@ -1,0 +1,32 @@
+.scrollButton {
+  position: fixed;
+  bottom: 1.5rem; /* Equivalent to bottom-6 */
+  right: 1.5rem;  /* Equivalent to right-6 */
+  width: 3rem;    /* Fixed width for circular shape */
+  height: 3rem;   /* Fixed height for circular shape */
+  border-radius: 50%;
+  background-color: #4CAF50; /* A retro-ish green */
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, transform 0.2s ease-in-out;
+  box-shadow: 3px 3px 0px 0px #2e7d32; /* Retro box shadow */
+  border: 2px solid #2e7d32; /* Retro border */
+}
+
+.scrollButton.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scrollButton:hover {
+  transform: translateY(-2px); /* Slight lift on hover */
+  box-shadow: 5px 5px 0px 0px #2e7d32;
+}
+
+.icon {
+  filter: invert(100%); /* Make SVG white */
+}
