@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "node scripts/build-images.mjs && next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "deploy": "gh-pages -d out"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
@@ -27,6 +28,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.5.3",
+    "gh-pages": "^6.3.0",
     "typescript": "^5"
   }
 }
