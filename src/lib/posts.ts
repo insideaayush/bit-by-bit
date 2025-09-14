@@ -44,17 +44,11 @@ export function getSortedPostsData() {
   });
 }
 
-export function getAllPostIds() {
+export function getAllPostIds(): string[] {
   const fileNames = fs.readdirSync(postsDirectory);
   return fileNames
     .filter((fileName) => fileName.endsWith('.md'))
-    .map((fileName) => {
-      return {
-        params: {
-          id: fileName.replace(/\.md$/, ''),
-        },
-      };
-    });
+    .map((fileName) => fileName.replace(/\.md$/, ''));
 }
 
 export async function getPostData(id: string) {
