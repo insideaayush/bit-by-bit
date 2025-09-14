@@ -1,0 +1,1 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[736],{4470:e=>{e.exports={contactSection:"resume_contactSection__DPGg9",contactItem:"resume_contactItem__ocf6q",icon:"resume_icon__4HyoZ"}},5324:(e,t,c)=>{Promise.resolve().then(c.t.bind(c,1356,23)),Promise.resolve().then(c.t.bind(c,4470,23))}},e=>{e.O(0,[709,356,441,255,358],()=>e(e.s=5324)),_N_E=e.O()}]);
