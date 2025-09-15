@@ -71,8 +71,10 @@ jobs:
           # If source files changed but packages didn't, rebuild from a prior cache.
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
-      - name: Create data directory
-        run: mkdir -p data
+      - name: Create resume file from secret
+        run: |
+          mkdir -p data
+          echo "${{ secrets.RESUME_DATA_YAML }}" > data/resume_$(date +'%Y_%m_%d').yaml
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
