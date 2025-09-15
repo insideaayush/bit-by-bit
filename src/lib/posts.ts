@@ -27,7 +27,7 @@ export function getSortedPostsData() {
       const matterResult = matter(fileContents, { excerpt: true });
       postData = { ...postData, ...(matterResult.data as { title: string }), excerpt: matterResult.excerpt };
     } else if (['.jpg', '.jpeg', '.png', '.gif'].includes(extension)) {
-      postData.url = `/images/${fileName}`;
+      postData.url = `${process.env.NEXT_PUBLIC_BASE_PATH}/images/${fileName}`;
       postData.title = type.replace(/-/g, ' '); // Create a title from the filename
     }
 
