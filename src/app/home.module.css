@@ -53,6 +53,7 @@
   padding: 1rem;
   box-sizing: border-box;
   transition: all 0.2s ease-in-out;
+  background-color: #f0f0e0;
 }
 
 .card:hover {
@@ -93,7 +94,7 @@
   }
 
   .timelineRight {
-    padding-left: 20px; /* Add some padding to align with the date */
+    padding-left: 0; /* Add some padding to align with the date */
     width: 100%;
   }
 
