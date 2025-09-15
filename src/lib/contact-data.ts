@@ -15,7 +15,6 @@ interface ResumeData {
 
 export function getContactData() {
   const resumesDir = path.join(process.cwd(), 'data');
-  console.log(resumesDir)
   const filenames = fs.readdirSync(resumesDir);
 
   const latestResumeFile = filenames
