@@ -1,4 +1,3 @@
-
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -6,35 +5,58 @@ import { remark } from 'remark';
 import html from 'remark-html';
 
 const postsDirectory = path.join(process.cwd(), 'posts');
+const publicImagesDirectory = path.join(process.cwd(), 'public', 'images');
 
 export function getSortedPostsData() {
-  const markdownFiles = fs.readdirSync(postsDirectory).filter(fileName => fileName.endsWith('.md'));
-  const imageFiles = fs.readdirSync(path.join(process.cwd(), 'public', 'images')).filter(fileName => ['.jpg', '.jpeg', '.png', '.gif'].includes(path.extname(fileName).toLowerCase()));
+  // --- Process Blog Posts --- //
+  let markdownFiles = fs.readdirSync(postsDirectory).filter(fileName => fileName.endsWith('.md'));
 
-  const allPostsData = [...markdownFiles, ...imageFiles].map((fileName) => {
-    const id = fileName.replace(/\.(md|jpg|png|gif)$/, '');
-    const extension = path.extname(fileName).toLowerCase();
+  // Filter out draft posts in production
+  if (process.env.APP_ENV === 'production') {
+    markdownFiles = markdownFiles.filter(fileName => !fileName.endsWith('-draft.md'));
+  }
+
+  const blogPosts = markdownFiles.map((fileName) => {
+    const id = fileName.replace(/\.md$/, '');
+    const fullPath = path.join(postsDirectory, fileName);
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const matterResult = matter(fileContents, { excerpt: true });
 
     const match = id.match(/^(\d{4}-\d{2}-\d{2})-(.*)$/);
     const date = match ? match[1] : '';
-    const type = match ? match[2] : '';
 
-    let postData: { id: string; date: string; type: string; title?: string; url?: string; excerpt?: string } = { id, date, type };
-
-    if (extension === '.md') {
-      const fullPath = path.join(postsDirectory, fileName);
-      const fileContents = fs.readFileSync(fullPath, 'utf8');
-      const matterResult = matter(fileContents, { excerpt: true });
-      postData = { ...postData, ...(matterResult.data as { title: string }), excerpt: matterResult.excerpt };
-    } else if (['.jpg', '.jpeg', '.png', '.gif'].includes(extension)) {
-      postData.url = `/images/${fileName}`;
-      postData.title = type.replace(/-/g, ' '); // Create a title from the filename
-    }
-
+    const postData: { id: string; date: string; type: string; title?: string; excerpt?: string } = {
+      id,
+      type: 'blog',
+      date: date,
+      title: matterResult.data.title as string,
+      excerpt: matterResult.excerpt,
+    };
     return postData;
   });
 
-  // Sort posts by date
+  // --- Process Image Posts --- //
+  const imageFiles = fs.readdirSync(publicImagesDirectory).filter(fileName => ['.jpg', '.jpeg', '.png', '.gif'].includes(path.extname(fileName).toLowerCase()));
+
+  const imagePosts = imageFiles.map((fileName) => {
+    const id = fileName.replace(/\.(md|jpg|png|gif)$/, '');
+    const match = id.match(/^(\d{4}-\d{2}-\d{2})-(.*)$/);
+    const date = match ? match[1] : '';
+    const title = match ? match[2].replace(/-/g, ' ') : '';
+
+    const postData: { id: string; date: string; type: string; title?: string; url?: string; } = {
+      id,
+      date,
+      title,
+      type: 'image',
+      url: `/images/${fileName}`,
+    };
+    return postData;
+  });
+
+  // --- Combine and Sort --- //
+  const allPostsData = [...blogPosts, ...imagePosts];
+
   return allPostsData.sort((a, b) => {
     if (a.date < b.date) {
       return 1;
@@ -45,7 +67,13 @@ export function getSortedPostsData() {
 }
 
 export function getAllPostIds(): string[] {
-  const fileNames = fs.readdirSync(postsDirectory);
+  let fileNames = fs.readdirSync(postsDirectory);
+
+  // Filter out draft posts in production
+  if (process.env.APP_ENV === 'production') {
+    fileNames = fileNames.filter(fileName => !fileName.endsWith('-draft.md'));
+  }
+
   return fileNames
     .filter((fileName) => fileName.endsWith('.md'))
     .map((fileName) => fileName.replace(/\.md$/, ''));

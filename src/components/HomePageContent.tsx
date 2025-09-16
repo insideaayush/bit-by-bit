@@ -38,7 +38,7 @@ const HomePageContent: React.FC<HomePageContentProps> = ({ allPostsData }) => {
             </div>
             <div className={styles.timelineRight}>
               <div className={styles.card}>
-                {type === 'blog' || type === 'another-blog' ? (
+                {type === 'blog' ? (
                   <Link href={`/blogs/${id}`}>
                     <h3>{title}</h3>
                     <p>{excerpt}</p>
