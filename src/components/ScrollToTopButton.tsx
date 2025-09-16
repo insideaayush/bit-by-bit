@@ -40,7 +40,7 @@ const ScrollToTopButton = () => {
       onClick={scrollToTop}
       aria-label="Scroll to top"
     >
-      <Image src={`${process.env.NEXT_PUBLIC_BASE_PATH}/icons/arrow-up.svg`} alt="Scroll to top" width={24} height={24} className={styles.icon} />
+      <Image src={`/icons/arrow-up.svg`} alt="Scroll to top" width={24} height={24} className={styles.icon} />
     </button>
   );
 };
