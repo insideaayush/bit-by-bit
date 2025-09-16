@@ -7,6 +7,12 @@
 .contactItem {
   display: flex;
   align-items: center;
+  min-width: 0; /* Prevents flex item from overflowing */
+}
+
+.contactItem a {
+  overflow-wrap: break-word;
+  word-break: break-all;
 }
 
 .icon {
