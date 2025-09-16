@@ -1,10 +1,10 @@
 
-import { getSortedPostsData } from '@/lib/posts';
+import { getSortedPostsData, BlogPost } from '@/lib/posts';
 import BlogContent from '@/components/BlogContent';
 
 export default function Blogs() {
   const allPostsData = getSortedPostsData();
-  const blogPosts = allPostsData.filter((post) => post.type === 'blog' || post.type === 'another-blog');
+  const blogPosts = allPostsData.filter((post): post is BlogPost => post.type === 'blog');
 
   return (
     <div>

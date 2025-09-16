@@ -7,7 +7,15 @@ import html from 'remark-html';
 const postsDirectory = path.join(process.cwd(), 'posts');
 const publicImagesDirectory = path.join(process.cwd(), 'public', 'images');
 
-export function getSortedPostsData() {
+// Type Definitions
+type Base = { id: string; date: string; title?: string };
+export type BlogPost = Base & { type: 'blog'; excerpt?: string };
+export type ImagePost = Base & { type: 'image'; url: string };
+
+
+export type Post = BlogPost | ImagePost;
+
+export function getSortedPostsData(): Post[] {
   // --- Process Blog Posts --- //
   let markdownFiles = fs.readdirSync(postsDirectory).filter(fileName => fileName.endsWith('.md'));
 
@@ -16,19 +24,19 @@ export function getSortedPostsData() {
     markdownFiles = markdownFiles.filter(fileName => !fileName.endsWith('-draft.md'));
   }
 
-  const blogPosts = markdownFiles.map((fileName) => {
+  const blogPosts: BlogPost[] = markdownFiles.map((fileName) => {
     const id = fileName.replace(/\.md$/, '');
     const fullPath = path.join(postsDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const matterResult = matter(fileContents, { excerpt: true });
 
-    const match = id.match(/^(\d{4}-\d{2}-\d{2})-(.*)$/);
+    const match = id.match(/^(\d{4}-\d{2}-\d{2})-(.*)$/); // FIXED REGEX
     const date = match ? match[1] : '';
 
-    const postData: { id: string; date: string; type: string; title?: string; excerpt?: string } = {
+    const postData: BlogPost = {
       id,
       type: 'blog',
-      date: date,
+      date: (matterResult.data.date as string) || date, // Prioritize frontmatter date, fallback to filename
       title: matterResult.data.title as string,
       excerpt: matterResult.excerpt,
     };
@@ -38,13 +46,13 @@ export function getSortedPostsData() {
   // --- Process Image Posts --- //
   const imageFiles = fs.readdirSync(publicImagesDirectory).filter(fileName => ['.jpg', '.jpeg', '.png', '.gif'].includes(path.extname(fileName).toLowerCase()));
 
-  const imagePosts = imageFiles.map((fileName) => {
+  const imagePosts: ImagePost[] = imageFiles.map((fileName) => {
     const id = fileName.replace(/\.(md|jpg|png|gif)$/, '');
     const match = id.match(/^(\d{4}-\d{2}-\d{2})-(.*)$/);
     const date = match ? match[1] : '';
     const title = match ? match[2].replace(/-/g, ' ') : '';
 
-    const postData: { id: string; date: string; type: string; title?: string; url?: string; } = {
+    const postData: ImagePost = {
       id,
       date,
       title,
@@ -55,7 +63,7 @@ export function getSortedPostsData() {
   });
 
   // --- Combine and Sort --- //
-  const allPostsData = [...blogPosts, ...imagePosts];
+  const allPostsData: Post[] = [...blogPosts, ...imagePosts];
 
   return allPostsData.sort((a, b) => {
     if (a.date < b.date) {

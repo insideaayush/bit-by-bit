@@ -6,19 +6,14 @@ import Image from 'next/image';
 import styles from '@/app/home.module.css';
 import LightboxWrapper from '@/components/Lightbox';
 
+import { Post, BlogPost, ImagePost } from '@/lib/posts';
+
 interface HomePageContentProps {
-  allPostsData: Array<{
-    id: string;
-    date: string;
-    title?: string;
-    type: string;
-    excerpt?: string;
-    url?: string;
-  }>;
+  allPostsData: Post[];
 }
 
 const HomePageContent: React.FC<HomePageContentProps> = ({ allPostsData }) => {
-  const imagePosts = allPostsData.filter((post) => post.url);
+  const imagePosts = allPostsData.filter((p): p is ImagePost => p.type === 'image');
 
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
@@ -31,21 +26,21 @@ const HomePageContent: React.FC<HomePageContentProps> = ({ allPostsData }) => {
     <section>
       <h2>Posts</h2>
       <div className={styles.timeline}>
-        {allPostsData.map(({ id, date, title, type, excerpt, url }, index) => (
-          <div key={id} className={styles.timelineItem}>
+        {allPostsData.map((post, index) => (
+          <div key={post.id} className={styles.timelineItem}>
             <div className={styles.timelineLeft}>
-              <div className={styles.timelineDate}>{date}</div>
+              <div className={styles.timelineDate}>{post.date}</div>
             </div>
             <div className={styles.timelineRight}>
               <div className={styles.card}>
-                {type === 'blog' ? (
-                  <Link href={`/blogs/${id}`}>
-                    <h3>{title}</h3>
-                    <p>{excerpt}</p>
+                {post.type === 'blog' ? (
+                  <Link href={`/blogs/${post.id}`}>
+                    <h3>{post.title}</h3>
+                    <p>{(post as BlogPost).excerpt}</p>
                   </Link>
                 ) : (
                   <div onClick={() => setSelectedIndex(index)}>
-                    {url && title && <Image src={url} alt={title} width={600} height={400} style={{ width: '100%', height: 'auto' }} />}
+                    {(post as ImagePost).url && post.title && <Image src={(post as ImagePost).url} alt={post.title} width={600} height={400} style={{ width: '100%', height: 'auto' }} />}
                   </div>
                 )}
               </div>
