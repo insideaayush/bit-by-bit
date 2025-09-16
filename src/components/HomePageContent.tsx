@@ -40,7 +40,12 @@ const HomePageContent: React.FC<HomePageContentProps> = ({ allPostsData }) => {
                   </Link>
                 ) : (
                   <div onClick={() => setSelectedIndex(index)}>
-                    {(post as ImagePost).url && post.title && <Image src={(post as ImagePost).url} alt={post.title} width={600} height={400} style={{ width: '100%', height: 'auto' }} />}
+                    {(post as ImagePost).url && post.title && (
+                      <>
+                        <Image src={(post as ImagePost).url} alt={post.title} width={600} height={400} style={{ width: '100%', height: 'auto' }} />
+                        <p>{post.title}</p> {/* Add this line */}
+                      </>
+                    )}
                   </div>
                 )}
               </div>

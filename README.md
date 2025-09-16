@@ -46,6 +46,7 @@ To run the website on your local machine:
     ```bash
     npm install
     ```
+    (This also sets up Git hooks automatically.)
 2.  **Run the Development Server:**
     ```bash
     npm run dev
