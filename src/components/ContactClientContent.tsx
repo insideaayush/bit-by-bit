@@ -4,9 +4,10 @@ import { useState } from 'react';
 import styles from '@/app/contact/contact.module.css'; // Use absolute path for styles
 import TerminalContact from '@/components/TerminalContact';
 import Image from 'next/image';
+import { ResumeData } from '@/lib/contact-data'; // Import ResumeData
 
 interface ContactClientContentProps {
-  data: any; // Use a more specific type if available, e.g., ResumeData from contact-data.ts
+  data: ResumeData; // Use ResumeData type
 }
 
 const ContactClientContent: React.FC<ContactClientContentProps> = ({ data }) => {
@@ -44,10 +45,7 @@ const ContactClientContent: React.FC<ContactClientContentProps> = ({ data }) => 
       ) : (
         <div className={styles.contactShareSection}>
           <h2>Share My Contact Info</h2>
-          <p>Scan the QR code or download my vCard to easily add me to your contacts.</p>
-          <a href="/contact.vcf" download="Aayush_Gautam_Contact.vcf" className={styles.vcardDownloadLink}>
-            Download vCard
-          </a>
+          <p>Scan the QR code to easily add me to your contacts.</p>
           <Image src="/contact-qr.png" alt="QR Code for Contact Info" width={200} height={200} className={styles.qrCodeImage} />
         </div>
       )}

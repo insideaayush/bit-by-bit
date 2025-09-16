@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
 
-interface ResumeData {
+export interface ResumeData {
   name: string;
   tagline?: string;
   contact: {

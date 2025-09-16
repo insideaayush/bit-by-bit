@@ -41,3 +41,6 @@ yarn-error.log*
 next-env.d.ts
 public/resumes/*.yaml
 data/*.yaml
+
+public/contact-qr.png
+public/contact.vcf
