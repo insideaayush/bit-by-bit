@@ -1,0 +1,21 @@
+{
+  "name": "Aayush Gautam",
+  "short_name": "Aayush",
+  "description": "Aayush Gautam's personal website, portfolio, and blog.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f0f0e0",
+  "theme_color": "#004d00",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
