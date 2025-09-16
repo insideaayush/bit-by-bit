@@ -108,3 +108,73 @@
     flex-basis: auto; /* Allow flex-basis to be auto on mobile */
   }
 }
+
+.contactShareSection {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #004d00;
+  text-align: center;
+}
+
+.contactShareSection h2 {
+  margin-bottom: 1rem;
+}
+
+.vcardDownloadLink {
+  display: inline-block;
+  background-color: #004d00;
+  color: #f0f0e0;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.2s ease-in-out;
+  margin-bottom: 1.5rem;
+}
+
+.vcardDownloadLink:hover {
+  background-color: #008000;
+}
+
+.qrCodeImage {
+  display: block;
+  margin: 0 auto;
+  border: 2px solid #004d00;
+  border-radius: 5px;
+}
+
+.iconToggleButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: transparent;
+  border: 2px solid #004d00;
+  border-radius: 50%; /* Make it round */
+  width: 40px; /* Fixed size */
+  height: 40px; /* Fixed size */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s ease-in-out;
+}
+
+.iconToggleButton:hover {
+  background-color: #004d00;
+}
+
+.toggleIcon {
+  width: 24px; /* Icon size */
+  height: 24px; /* Icon size */
+  color: #004d00; /* Icon color */
+  transition: color 0.2s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.toggleIcon.rotated {
+  transform: rotate(180deg); /* Rotate when active */
+}
+
+.iconToggleButton:hover .toggleIcon {
+  color: #f0f0e0;
+}
