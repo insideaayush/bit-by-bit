@@ -67,4 +67,10 @@ This site is configured for continuous deployment.
 
 ## License
 
-If you wish to use my project code as a starting point for your own personal website, you are free to do so.
+### Code
+
+The source code for this project is licensed under the GNU General Public License v3.0. You are free to use, modify, and distribute the code as per the terms of the license. See the [LICENSE](LICENSE) file for more details.
+
+### Content
+
+All content, including the text of blog posts and images found on the website, are the intellectual property of the author, Aayush Gautam. All rights are reserved. The content is not available for reuse or distribution without explicit permission.
