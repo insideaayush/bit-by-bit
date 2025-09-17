@@ -4,5 +4,28 @@ Disallow: /
 User-agent: CCBot
 Disallow: /
 
+# Allow all search engines to crawl the entire site
 User-agent: *
+Allow: /
+
+# Disallow AI models from training on images
+# Google-Extended is used by Google's AI models
+User-agent: Google-Extended
+Disallow: /images/
+
+# CCBot is a common bot used for collecting data for AI training
+User-agent: CCBot
 Disallow: /
+
+# Other known AI bots
+User-agent: GPTBot
+Disallow: /images/
+
+User-agent: ChatGPT-User
+Disallow: /images/
+
+User-agent: Omgilibot
+Disallow: /images/
+
+User-agent: FacebookBot
+Disallow: /images/
