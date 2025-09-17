@@ -26,12 +26,14 @@
 
 .timelineLeft {
   flex: 0 0 100px;
+  margin-right: 20px;
   position: relative;
 }
 
 .timelineRight {
   flex: 1;
   padding-left: 20px;
+  /* margin-left: 20px; */
 }
 
 .timelineDate {
@@ -45,6 +47,10 @@
   top: 50%;
   transform: translateY(-50%);
   z-index: 2;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card {
