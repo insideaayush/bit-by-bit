@@ -71,6 +71,8 @@ jobs:
           cat <<EOF > "data/resume_$(date +%Y_%m_%d).yaml"
           ${{ secrets.RESUME_DATA_YAML }}
           EOF
+      - name: Verify generated resume file
+        run: cat data/resume_$(date +%Y_%m_%d).yaml
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
