@@ -26,7 +26,6 @@
 
 .timelineLeft {
   flex: 0 0 100px;
-  margin-right: 20px;
   position: relative;
 }
 
@@ -46,10 +45,6 @@
   top: auto;
   transform: none;
   z-index: 2;
-  font-size: 0.85rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .card {
