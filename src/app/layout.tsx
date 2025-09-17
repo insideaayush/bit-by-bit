@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { VT323 } from "next/font/google";
+import { Space_Mono } from "next/font/google";
 import "./globals.css";
 import Layout from "@/components/Layout";
 
-const vt323 = VT323({ subsets: ["latin"], weight: "400" });
+const spaceMono = Space_Mono({ subsets: ["latin"], weight: ["400", "700"] });
 
 export const metadata: Metadata = {
   title: "Aayush Gautam - Personal Website",
@@ -25,7 +25,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Aayush Gautam" />
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
       </head>
-      <body className={vt323.className}>
+      <body className={spaceMono.className}>
         <Layout>{children}</Layout>
       </body>
     </html>

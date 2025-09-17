@@ -73,7 +73,12 @@ export default async function Resume() {
               )}
             </>
           )}
-          {data.contact.website && <p>Website: <a href={`http://${data.contact.website}`}>{data.contact.website}</a></p>}
+          {data.contact.website && (
+            <div className={styles.contactItem}>
+              <Image src={`/globe.svg`} alt="Website" width={24} height={24} className={styles.icon} />
+              <a href={`http://${data.contact.website}`}>{data.contact.website}</a>
+            </div>
+          )}
         </div>
       </section>
 

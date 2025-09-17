@@ -6,6 +6,7 @@ body {
   min-height: 100vh;
   box-sizing: border-box;
   position: relative;
+  font-family: 'Space Mono', monospace;
 }
 
 body::after {
