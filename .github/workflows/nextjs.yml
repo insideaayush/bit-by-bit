@@ -68,7 +68,7 @@ jobs:
       - name: Create resume file from secret
         run: |
           mkdir -p data
-          cat <<EOF > "data/resume_$(date +%Y_%m_%d).yaml"
+          cat <<'EOF' > "data/resume_$(date +%Y_%m_%d).yaml"
           ${{ secrets.RESUME_DATA_YAML }}
           EOF
       - name: Verify generated resume file
