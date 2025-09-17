@@ -1,25 +1,54 @@
-# Allow all search engines to crawl the entire site
+# Index all pages/blogs for discovery
 User-agent: *
 Allow: /
 
-# Disallow AI models from training on images
-# Google-Extended is used by Google's AI models
-User-agent: Google-Extended
+# Block all image crawling
+User-agent: *
 Disallow: /images/
 
-# CCBot is a common bot used for collecting data for AI training
+# Allow common preview bots so link cards still show images
+User-agent: Twitterbot
+Allow: /images/
+
+User-agent: facebookexternalhit
+Allow: /images/
+
+User-agent: LinkedInBot
+Allow: /images/
+
+User-agent: Slackbot
+Allow: /images/
+
+User-agent: Discordbot
+Allow: /images/
+
+User-agent: TelegramBot
+Allow: /images/
+
+# Optional: block AI/scraper bots entirely
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: OAI-SearchBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
 User-agent: CCBot
 Disallow: /
 
-# Other known AI bots
-User-agent: GPTBot
-Disallow: /images/
+User-agent: Google-Extended
+Disallow: /
 
-User-agent: ChatGPT-User
-Disallow: /images/
-
-User-agent: Omgilibot
-Disallow: /images/
-
-User-agent: FacebookBot
-Disallow: /images/
+# Discovery
+Sitemap: https://aayushgautam.xyz/sitemap.xml
