@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import styles from './resume.module.css';
 import { getResumeData } from '@/lib/resume-data';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 export default async function Resume() {
   const data = getResumeData();
@@ -77,7 +79,7 @@ export default async function Resume() {
 
       <section>
         <h2>Summary</h2>
-        <p>{data.summary}</p>
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>{data.summary}</ReactMarkdown>
       </section>
 
       <section>
@@ -92,7 +94,7 @@ export default async function Resume() {
             <h3>{exp.role} - {exp.display_name || exp.company}</h3>
             <p><em>{exp.start_date} - {exp.end_date} {exp.location && `| ${exp.location}`}</em></p>
             <ul>
-              {exp.bullets.map((bullet, i) => <li key={i}>{bullet}</li>)}
+              {exp.bullets.map((bullet, i) => <li key={i}><ReactMarkdown remarkPlugins={[remarkGfm]}>{bullet}</ReactMarkdown></li>)}
             </ul>
           </div>
         ))}
@@ -118,7 +120,7 @@ export default async function Resume() {
               <p>{project.description}</p>
               {project.bullets && (
                 <ul>
-                  {project.bullets.map((bullet, i) => <li key={i}>{bullet}</li>)}
+                  {project.bullets.map((bullet, i) => <li key={i}><ReactMarkdown remarkPlugins={[remarkGfm]}>{bullet}</ReactMarkdown></li>)}
                 </ul>
               )}
               {project.keywords && <p><strong>Keywords:</strong> {project.keywords.join(', ')}</p>}
