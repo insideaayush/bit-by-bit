@@ -44,3 +44,4 @@ data/*.yaml
 
 public/contact-qr.png
 public/contact.vcf
+public/rss.xml
