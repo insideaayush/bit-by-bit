@@ -1,10 +1,45 @@
 import { getPostData, getAllPostIds } from '@/lib/posts';
 import BackButton from '@/components/BackButton';
+import { Metadata } from 'next';
 
 export const dynamicParams = false; // For static export
 
-export default async function Post(props: PageProps<'/blogs/[id]'>) {
-  const { id } = await props.params
+type PageProps = {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { id } = await params;
+  const postData = await getPostData(id);
+  const siteUrl = 'https://aayushgautam.xyz';
+  const fallbackImage = `${siteUrl}/images/fallback-image.svg`;
+  const postImage = postData.image ? `${siteUrl}${postData.image}` : fallbackImage;
+
+  return {
+    title: postData.title,
+    description: postData.excerpt,
+    openGraph: {
+      title: postData.title,
+      description: postData.excerpt || '',
+      url: `${siteUrl}/blogs/${postData.id}`,
+      siteName: 'Aayush Gautam',
+      images: [postImage],
+      locale: 'en_US',
+      type: 'article',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: postData.title,
+      description: postData.excerpt || '',
+      creator: '@aayush_gautam',
+      images: [postImage],
+    },
+  };
+}
+
+export default async function Post({ params }: PageProps) {
+  const { id } = await params;
   const postData = await getPostData(id);
   return (
     <article>
