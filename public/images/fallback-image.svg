@@ -1,0 +1,15 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1200" height="630" fill="#f0f0e0"/>
+<style>
+  .text {
+    font-family: 'VT323', monospace;
+    font-size: 120px;
+    fill: #004d00;
+    text-anchor: middle;
+  }
+</style>
+<g transform="translate(300, 100) rotate(-15)">
+  <rect x="0" y="0" width="600" height="400" fill="#ffffff" stroke="#004d00" stroke-width="10"/>
+  <text x="300" y="250" class="text">blog</text>
+</g>
+</svg>

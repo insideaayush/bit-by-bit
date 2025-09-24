@@ -92,7 +92,7 @@ export async function getPostData(id: string) {
   const fileContents = fs.readFileSync(fullPath, 'utf8');
 
   // Use gray-matter to parse the post metadata section
-  const matterResult = matter(fileContents);
+  const matterResult = matter(fileContents, { excerpt: true });
 
   // Use remark to convert markdown into HTML string
   const processedContent = await remark()
@@ -104,6 +104,7 @@ export async function getPostData(id: string) {
   return {
     id,
     contentHtml,
-    ...(matterResult.data as { date: string; title: string }),
+    excerpt: matterResult.excerpt,
+    ...(matterResult.data as { date: string; title: string; image?: string }),
   };
 }

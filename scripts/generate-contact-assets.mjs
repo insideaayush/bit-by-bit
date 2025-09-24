@@ -50,11 +50,11 @@ async function generateContactAssets() {
 
   const publicDir = path.join(process.cwd(), 'public');
   const vcardPath = path.join(publicDir, 'contact.vcf');
-  const qrCodePath = path.join(publicDir, 'contact-qr.png');
+  const qrCodePath = path.join(publicDir, 'contact-qr2.png');
 
   try {
     // --- Generate QR Code --- //
-    await qrcode.toFile(qrCodePath, vcard, { type: 'png', errorCorrectionLevel: 'M', color: { dark: '#004d00', light: '#f0f0e0' } });
+    await qrcode.toFile(qrCodePath, vcard, { type: 'png', errorCorrectionLevel: 'M', color: { dark: '#000000', light: '#b0c4b1' } });
     console.log('Generated contact-qr.png');
 
   } catch (e) {

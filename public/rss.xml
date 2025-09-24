@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title><![CDATA[Aayush Gautam's Blog]]></title>
+        <description><![CDATA[A collection of thoughts and writings by Aayush Gautam.]]></description>
+        <link>https://aayushgautam.xyz</link>
+        <generator>RSS for Node</generator>
+        <lastBuildDate>Wed, 24 Sep 2025 09:15:45 GMT</lastBuildDate>
+        <atom:link href="https://aayushgautam.xyz/rss.xml" rel="self" type="application/rss+xml"/>
+        <pubDate>Wed, 24 Sep 2025 09:15:45 GMT</pubDate>
+        <copyright><![CDATA[All rights reserved 2025, Aayush Gautam]]></copyright>
+        <language><![CDATA[en]]></language>
+        <item>
+            <title><![CDATA[My First Blog Post]]></title>
+            <description><![CDATA[
+This is my first blog post.
+]]></description>
+            <link>https://aayushgautam.xyz/blogs/2025-09-12-blog</link>
+            <guid isPermaLink="false">2025-09-12-blog</guid>
+            <pubDate>Fri, 12 Sep 2025 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Another Blog Post]]></title>
+            <description><![CDATA[
+This is another blog post.
+]]></description>
+            <link>https://aayushgautam.xyz/blogs/2025-09-11-another-blog</link>
+            <guid isPermaLink="false">2025-09-11-another-blog</guid>
+            <pubDate>Thu, 11 Sep 2025 00:00:00 GMT</pubDate>
+        </item>
+    </channel>
+</rss>
