@@ -24,6 +24,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="Aayush Gautam" />
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+        <link rel="alternate" type="application/rss+xml" title="Aayush Gautam RSS Feed" href="https://aayushgautam.xyz/rss.xml" />
       </head>
       <body className={vt323.className}>
         <Layout>{children}</Layout>
