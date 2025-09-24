@@ -3,6 +3,12 @@ import styles from './resume.module.css';
 import { getResumeData } from '@/lib/resume-data';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Resume - Aayush Gautam',
+  description: 'The resume of Aayush Gautam.',
+};
 
 export default async function Resume() {
   const data = getResumeData();
@@ -38,36 +44,36 @@ export default async function Resume() {
         <h2>Contact</h2>
         <div className={styles.contactSection}>
           <div className={styles.contactItem}>
-            <Image src={`/icons/email.svg`} alt="Email" width={24} height={24} className={styles.icon} />
+            <Image src={`/icons/email.svg`} alt="Email icon" width={24} height={24} className={styles.icon} />
             <a href={`mailto:${data.contact.email}`}>{data.contact.email}</a>
           </div>
           {data.contact.linkedin && (
             <div className={styles.contactItem}>
-              <Image src={`/icons/linkedin.svg`} alt="LinkedIn" width={24} height={24} className={styles.icon} />
+              <Image src={`/icons/linkedin.svg`} alt="LinkedIn icon" width={24} height={24} className={styles.icon} />
               <a href={data.contact.linkedin}>{data.contact.linkedin}</a>
             </div>
           )}
           {data.contact.telegram && (
             <div className={styles.contactItem}>
-              <Image src={`/icons/telegram.svg`} alt="Telegram" width={24} height={24} className={styles.icon} />
+              <Image src={`/icons/telegram.svg`} alt="Telegram icon" width={24} height={24} className={styles.icon} />
               <a href={`https://t.me/${data.contact.telegram}`}>{data.contact.telegram}</a>
             </div>
           )}
           {data.contact.github && (
             <>
               <div className={styles.contactItem}>
-                <Image src={`/icons/github.svg`} alt="GitHub Personal" width={24} height={24} className={styles.icon} />
+                <Image src={`/icons/github.svg`} alt="GitHub icon" width={24} height={24} className={styles.icon} />
                 <a href={data.contact.github.personal}>GitHub (Personal)</a>
               </div>
               {data.contact.github.rockx && (
                 <div className={styles.contactItem}>
-                  <Image src={`/icons/github.svg`} alt="GitHub RockX" width={24} height={24} className={styles.icon} />
+                  <Image src={`/icons/github.svg`} alt="GitHub icon" width={24} height={24} className={styles.icon} />
                   <a href={data.contact.github.rockx}>GitHub (RockX)</a>
                 </div>
               )}
               {data.contact.github.bedrock && (
                 <div className={styles.contactItem}>
-                  <Image src={`/icons/github.svg`} alt="GitHub Bedrock" width={24} height={24} className={styles.icon} />
+                  <Image src={`/icons/github.svg`} alt="GitHub icon" width={24} height={24} className={styles.icon} />
                   <a href={data.contact.github.bedrock}>GitHub (Bedrock)</a>
                 </div>
               )}
@@ -75,7 +81,7 @@ export default async function Resume() {
           )}
           {data.contact.website && (
             <div className={styles.contactItem}>
-              <Image src={`/globe.svg`} alt="Website" width={24} height={24} className={styles.icon} />
+              <Image src={`/globe.svg`} alt="Website icon" width={24} height={24} className={styles.icon} />
               <a href={`http://${data.contact.website}`}>{data.contact.website}</a>
             </div>
           )}

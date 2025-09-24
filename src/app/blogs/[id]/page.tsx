@@ -41,8 +41,32 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function Post({ params }: PageProps) {
   const { id } = await params;
   const postData = await getPostData(id);
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: postData.title,
+    image: postData.image ? `https://aayushgautam.xyz${postData.image}` : 'https://aayushgautam.xyz/images/fallback-image.svg',
+    author: {
+      '@type': 'Person',
+      name: 'Aayush Gautam',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Aayush Gautam',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://aayushgautam.xyz/icons/icon-512x512.png',
+      },
+    },
+    datePublished: postData.date,
+  };
+
   return (
     <article>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <BackButton />
       <h1>{postData.title}</h1>
       <div>{postData.date}</div>
