@@ -1,3 +1,5 @@
+'use client';
+
 import Navigation from './Navigation';
 import styles from './Layout.module.css';
 import ScrollToTopButton from './ScrollToTopButton';

@@ -1,15 +1,15 @@
 .backButton {
   background-color: transparent;
-  color: #004d00;
-  border: 1px solid #004d00;
-  padding: 0.4rem 0.8rem;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
+  color: var(--color-text);
+  border: var(--border-width-base) solid var(--color-border);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-base);
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
 
 .backButton:hover {
-  background-color: #004d00;
-  color: #f0f0e0;
+  background-color: var(--color-primary);
+  color: var(--color-background);
 }

@@ -2,7 +2,7 @@
 .timeline {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: var(--spacing-xl);
   position: relative;
 }
 
@@ -10,9 +10,9 @@
   content: '';
   position: absolute;
   left: 50px;
-  width: 2px;
+  width: var(--border-width-base);
   height: 100%;
-  background: #004d00;
+  background: var(--color-border);
   z-index: 1;
 }
 
@@ -31,14 +31,14 @@
 
 .timelineRight {
   flex: 1;
-  padding-left: 20px;
+  padding-left: var(--spacing-lg);
 }
 
 .timelineDate {
-  background: #f0f0e0;
-  padding: 0.5rem 1rem;
-  border: 2px solid #004d00;
-  font-weight: bold;
+  background: var(--color-background);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: var(--border-width-base) solid var(--color-border);
+  font-weight: var(--font-weight-bold);
   display: inline-block;
   position: relative;
   left: auto;
@@ -49,32 +49,32 @@
 
 .card {
   width: 100%;
-  border: 2px solid #004d00;
-  padding: 1rem;
+  border: var(--border-width-base) solid var(--color-border);
+  padding: var(--spacing-md);
   box-sizing: border-box;
   transition: all 0.2s ease-in-out;
   text-decoration: none;
-  color: inherit;
-  background-color: #f0f0e0;
+  color: var(--color-text);
+  background-color: var(--color-background);
 }
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 5px 15px #004d00;
+  box-shadow: var(--box-shadow-base) var(--color-accent);
 }
 
 .card a {
   text-decoration: none;
-  color: inherit;
+  color: var(--color-text);
 }
 
 .card a:hover {
   background-color: transparent;
-  color: #004d00;
+  color: var(--color-text);
 }
 
 .card h2 {
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--spacing-sm);
 }
 
 @media (max-width: 768px) {
@@ -91,7 +91,7 @@
   .timelineLeft {
     flex: 0 0 auto;
     width: 100%;
-    margin-bottom: 1rem;
+    margin-bottom: var(--spacing-md);
     position: static;
   }
 

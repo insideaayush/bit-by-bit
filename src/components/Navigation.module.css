@@ -1,13 +1,28 @@
 
 .nav {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  border-bottom: var(--border-width-base) solid var(--color-border);
+  position: relative;
+}
+
+.navLinks {
+  display: flex;
+  gap: var(--spacing-md);
   justify-content: center;
-  gap: 1rem;
-  padding-bottom: 1rem;
-  margin-bottom: 1rem;
-  border-bottom: 2px solid #004d00;
+  flex-grow: 1; /* Allow it to take available space */
 }
 
 .nav a {
   text-decoration: none;
+  color: var(--color-link);
+}
+
+.nav a:hover {
+  background-color: var(--color-link-hover-bg);
+  color: var(--color-link-hover-text);
 }

@@ -1,9 +1,9 @@
 .footer {
   text-align: center;
-  font-size: 0.8rem;
-  color: #839496; /* Solarized base0 - subtle gray */
-  padding: 1rem;
-  margin-top: 2rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-text); /* Use semantic variable */
+  padding: var(--spacing-md);
+  margin-top: var(--spacing-xl);
 }
 
 .footer p {

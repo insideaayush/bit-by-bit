@@ -1,11 +1,14 @@
+html,
 body {
-  background-color: #f0f0e0;
-  color: #004d00;
   margin: 0;
-  padding: 1rem;
+  padding: var(--spacing-md);
   min-height: 100vh;
   box-sizing: border-box;
   position: relative;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
 }
 
 body::after {
@@ -32,30 +35,82 @@ h1::after {
 }
 
 a {
-  color: #008000;
+  color: var(--color-link);
   text-decoration: none;
 }
 
 a:hover {
-  background-color: #008000;
-  color: #f0f0e0;
+  background-color: var(--color-link-hover-bg);
+  color: var(--color-link-hover-text);
 }
 
+/* Base semantic variables - these are the ones components will use */
 :root {
-  /* GitHub Light Terminal Palette */
-  --github-bg: #ffffff;
-  --github-casing: #e0e0e0;
-  --github-text: #24292e;
-  --github-muted: #6a737d;
-  --github-blue: #0366d6;
-  --github-dark-blue: #005cc5;
-  --github-orange: #e36209;
+  /* Font Variables */
+  --font-family-primary: 'VT323', monospace;
+  --font-size-base: 1rem;
+  --font-size-sm: 0.8rem;
+  --font-size-h1: 2.5rem;
+  --font-size-h2: 2rem;
+  --font-size-h3: 1.5rem;
+  --font-weight-bold: bold;
 
-  /* Retro Futuristic Palette */
-  --retro-dark-bg: #1a1a2e;
-  --retro-neon-green: #00ff00;
-  --retro-neon-blue: #00ffff;
-  --retro-neon-purple: #ff00ff;
-  --retro-text-color: #e0e0e0;
-  --retro-accent-color: #ff7f50;
+  /* Spacing Variables */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+
+  /* Border & Shadow Variables */
+  --border-radius-base: 4px;
+  --border-width-base: 2px;
+  --box-shadow-base: 3px 3px 0px 0px;
+  --box-shadow-base-hover: 5px 5px 0px 0px;
+
+  /* Default Light Mode Colors */
+  --color-background: #f0f0e0;
+  --color-text: #004d00;
+  --color-primary: #008000;
+  --color-accent: #008000;
+  --color-border: #004d00;
+  --color-link: var(--color-primary);
+  --color-link-hover-bg: var(--color-primary);
+  --color-link-hover-text: var(--color-background);
+}
+
+/* Default Scheme - Dark Mode */
+[data-theme='dark'][data-scheme='default'] {
+  --color-background: #1a1a2e; /* Dark Blue */
+  --color-text: #e0e0e0;     /* Light Grey */
+  --color-primary: #00e6e6;    /* Cyan */
+  --color-accent: #00e6e6;     /* Cyan */
+  --color-border: #e0e0e0;     /* Light Grey */
+  --color-link: var(--color-primary);
+  --color-link-hover-bg: var(--color-primary);
+  --color-link-hover-text: var(--color-background);
+}
+
+/* GitHub Scheme - Light Mode */
+[data-scheme='github'] {
+  --color-background: #ffffff; /* White */
+  --color-text: #24292e;     /* Dark Grey */
+  --color-primary: #0366d6;    /* Blue */
+  --color-accent: #0366d6;     /* Blue */
+  --color-border: #e0e0e0;     /* Light Grey */
+  --color-link: var(--color-primary);
+  --color-link-hover-bg: var(--color-primary);
+  --color-link-hover-text: #ffffff;
+}
+
+/* GitHub Scheme - Dark Mode */
+[data-theme='dark'][data-scheme='github'] {
+  --color-background: #0d1117; /* Very Dark Grey */
+  --color-text: #c9d1d9;     /* Light Grey */
+  --color-primary: #58a6ff;    /* Light Blue */
+  --color-accent: #58a6ff;     /* Light Blue */
+  --color-border: #30363d;     /* Medium Dark Grey */
+  --color-link: var(--color-primary);
+  --color-link-hover-bg: var(--color-primary);
+  --color-link-hover-text: #0d1117;
 }

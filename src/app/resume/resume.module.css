@@ -16,5 +16,6 @@
 }
 
 .icon {
-  margin-right: 0.5rem;
+  margin-right: var(--spacing-sm);
+  color: var(--color-text); /* Ensure icons inherit theme color */
 }

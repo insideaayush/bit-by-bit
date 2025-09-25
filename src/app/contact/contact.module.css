@@ -6,7 +6,7 @@
   align-items: flex-start; /* Left align content */
   padding: 2rem 1rem;
   min-height: calc(100vh - var(--navbar-height, 60px));
-  color: #004d00; /* Restore original dark green text color */
+  color: var(--color-text); /* Use semantic variable */
   font-family: 'VT323', monospace;
   position: relative;
 }
@@ -15,16 +15,14 @@
 .terminalWindow {
   width: 90vw;
   max-width: 800px;
-  background-color: var(--solarized-base03); /* Dark background */
-  border: 1px solid var(--solarized-base01); /* Subtle border */
+  background-color: var(--color-background); /* Use semantic variable */
+  border: 1px solid transparent; /* Invisible border in both modes */
   border-radius: 4px;
   display: flex;
   flex-direction: column;
   margin: 2rem 0 0 0; /* Top margin, no horizontal auto-margin */
   position: relative;
 }
-
-
 
 .terminalContent {
   flex-grow: 1;
@@ -33,21 +31,21 @@
   word-break: break-all;
   font-size: 1rem;
   line-height: 1.4;
-  color: var(--solarized-base0); /* Main terminal text color */
+  color: var(--color-text); /* Use semantic variable */
 }
 
 .terminalPrompt {
-  color: var(--solarized-green); /* Prompt color */
+  color: var(--color-primary); /* Use semantic variable */
   margin-right: 0.5rem;
 }
 
 .typedCommand {
-  color: var(--solarized-blue); /* Typed command color */
+  color: var(--color-accent); /* Use semantic variable */
 }
 
 .cursor {
   animation: blink-terminal 1s step-end infinite;
-  color: var(--solarized-green);
+  color: var(--color-primary);
 }
 
 @keyframes blink-terminal {
@@ -57,7 +55,7 @@
 
 .contactOutput {
   margin-top: 1rem;
-  color: var(--solarized-base0);
+  color: var(--color-text);
   display: flex; /* Use flex for 2 columns */
   flex-direction: row; /* Default to row for wider screens */
   gap: 2rem; /* Increased gap for better separation */
@@ -68,7 +66,7 @@
   white-space: pre;
   font-size: 0.8rem;
   line-height: 1;
-  color: var(--solarized-blue); /* Blue for ASCII art */
+  color: var(--color-accent); /* Use semantic variable */
   flex: 0 0 200px; /* Fixed width for ASCII art column */
   max-width: 200px; /* Ensure it doesn't take more than 200px */
   overflow: hidden; /* Hide overflow if content is too wide */
@@ -80,6 +78,14 @@
   flex-grow: 1;
   flex-basis: 0; /* Allow it to take remaining space */
   min-width: 250px; /* Minimum width for contact details column */
+}
+
+.contactKey {
+  color: var(--color-text);
+}
+
+.contactLink {
+  color: var(--color-link);
 }
 
 /* Mobile adjustments */
@@ -123,8 +129,8 @@
 
 .vcardDownloadLink {
   display: inline-block;
-  background-color: #004d00;
-  color: #f0f0e0;
+  background-color: var(--color-primary); /* Use semantic variable */
+  color: var(--color-background); /* Use semantic variable */
   padding: 0.8rem 1.5rem;
   border-radius: 5px;
   text-decoration: none;
@@ -134,13 +140,13 @@
 }
 
 .vcardDownloadLink:hover {
-  background-color: #008000;
+  background-color: var(--color-accent); /* Use semantic variable */
 }
 
 .qrCodeImage {
   display: block;
   margin: 0 auto;
-  border: 2px solid #004d00;
+  border: 2px solid var(--color-border); /* Use semantic variable */
   border-radius: 5px;
 }
 
@@ -149,7 +155,7 @@
   top: 1rem;
   right: 1rem;
   background-color: transparent;
-  border: 2px solid #004d00;
+  border: 2px solid var(--color-border); /* Use semantic variable */
   border-radius: 50%; /* Make it round */
   width: 40px; /* Fixed size */
   height: 40px; /* Fixed size */
@@ -162,13 +168,13 @@
 }
 
 .iconToggleButton:hover {
-  background-color: #004d00;
+  background-color: var(--color-primary); /* Use semantic variable */
 }
 
 .toggleIcon {
   width: 24px; /* Icon size */
   height: 24px; /* Icon size */
-  color: #004d00; /* Icon color */
+  color: var(--color-text); /* Use semantic variable */
   transition: color 0.2s ease-in-out, transform 0.3s ease-in-out;
 }
 
@@ -177,5 +183,5 @@
 }
 
 .iconToggleButton:hover .toggleIcon {
-  color: #f0f0e0;
+  color: var(--color-background);
 }
